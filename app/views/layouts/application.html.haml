@@ -1,0 +1,20 @@
+!!!
+%html
+  %head
+    %title EBS demo
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag 'application'
+    = csrf_meta_tag
+    = yield :head
+  %body
+    #header
+      .user_info
+        - if current_user
+          Logged in as
+          = current_user.user_name
+          |
+          = link_to "Log out", logout_path
+    #container
+      - flash.each do |name, msg|
+        = content_tag :div, msg, :id => "flash_#{name}"
+      = yield
