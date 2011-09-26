@@ -5,6 +5,7 @@ class EBS.EmployeesView
       .delegate("tr td.editable", "dblclick", @editRow)
       .delegate("a.cancel_edit", "click", @cancelEdit)
       .delegate(".buttons input:submit", "click", @save)
+    $("input:text:first").focus()
 
   editRow: (e) =>
     $td = $(e.currentTarget)
