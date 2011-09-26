@@ -1,0 +1,10 @@
+<tr id="<%= dom_id(employee) %>">
+  <td class="employee_number">
+    <%= employee.employee_number %>
+    <span class="buttons"></span>
+  </td>
+  <td class="editable first_name" data-value="<%= employee.first_name %>"><%= highlight_q employee.first_name %></td>
+  <td class="editable last_name" data-value="<%= employee.last_name %>"><%= highlight_q employee.last_name %></td>
+  <td class="editable email_address" data-value="<%= employee.email_address %>"><%= highlight_q employee.email_address %></td>
+  <td class="organization_name"><%= highlight_q employee.organization_name %></td>
+</tr>

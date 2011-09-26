@@ -1,8 +1,0 @@
-%tr{:id => dom_id(employee)}
-  %td.employee_number
-    = employee.employee_number
-    %span.buttons
-  %td.editable.first_name{:"data-value" => employee.first_name}= highlight_q employee.first_name
-  %td.editable.last_name{:"data-value" => employee.last_name}= highlight_q employee.last_name
-  %td.editable.email_address{:"data-value" => employee.email_address}= highlight_q employee.email_address
-  %td= highlight_q employee.organization_name

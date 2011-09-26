@@ -1,0 +1,30 @@
+<%= form_tag employees_path, :method => :get do %>
+  <%= text_field_tag :q, params[:q] %>
+  <%= submit_tag "Search" %>
+  &nbsp;&nbsp;&nbsp;&nbsp;Double click employee name or email to edit.
+<% end %>
+
+<% if @employees.empty? %>
+  <p>No employees found.</p>
+<% else %>
+  <table id="employees">
+    <tr>
+      <th>Employee number</th>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Email</th>
+      <th>Organization</th>
+    </tr>
+    <%= render @employees %>
+  </table>
+
+  <p>
+    <%= paginate @employees %>
+  </p>
+<% end %>
+
+<script type="text/javascript" charset="utf-8">
+  $(function() {
+    new EBS.EmployeesView;
+  });
+</script>
