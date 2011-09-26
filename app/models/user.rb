@@ -10,13 +10,21 @@ class User < ActiveRecord::Base
     user_responsibilities.where("key LIKE '%HRMS_MANAGER'").first
   end
 
+  class MissingCurrentUser < StandardError
+  end
+
+  class MissingResponsibility < StandardError
+  end
+
   def initialize_ebs_session
     raise MissingResponsibility unless responsibility = hrms_manager_responsibility
     plsql.fnd_global.apps_initialize(id, responsibility.responsibility_id, responsibility.responsibility_application_id)
     plsql.hr_signon.initialize_hr_security
   end
 
-  class MissingResponsibility < StandardError
+  def self.initialize_ebs_session
+    raise MissingCurrentUser unless current
+    current.initialize_ebs_session
   end
 
   def self.authenticate(user_name, password)

@@ -27,7 +27,7 @@ class Employee < ActiveRecord::Base
 
   set_update_method do
     benchmark "DEBUG: initialize EBS session" do
-      User.current.initialize_ebs_session
+      User.initialize_ebs_session
     end
     benchmark "DEBUG: update person" do
       plsql.hr_person_api.update_person(
